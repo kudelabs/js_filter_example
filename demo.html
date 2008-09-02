@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <title>Javascript universal filter example</title>
+
+  <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+  <script type="text/javascript">
+		google.load("prototype", "1.6.0.2");  
+		google.load("scriptaculous", "1.8.1");
+  </script>
+	<script type="text/javascript" src="filter.js"></script>
+
+<script type="text/javascript">
+function strip_spaces(stripee) {
+    return stripee.replace(/(^[ ]*) | ([ ]*$)/g,'');
+}
+</script>
+
+</head>
+
+<body>
+
+Filter: <input id="keyword" type="text" />
+
+
+<table border="1">
+
+<thead>
+  <tr>
+    <th>Type</th>
+
+    <th>Name</th>
+    <th>Price</th>
+  </tr>
+</thead>
+
+<tbody id="food">
+	<tr id="tr_01">
+  		<td rowspan="3">Vegetable</td>
+		<td>Eggplant</td>
+
+		<td>10.00</td>
+	</tr>
+	<tr id="tr_02">
+		<td>Cabbage</td>
+		<td>20.00</td>
+	</tr>
+	<tr id="tr_03">
+
+		<td>Onion</td>
+		<td>15.00</td>
+	</tr>
+	
+	<tr id="tr_04">
+		<td rowspan="2">Fruit</td>
+		<td>Orange</td>
+		<td>35.00</td>
+
+	</tr>
+	<tr id="tr_05">
+		<td>Apple</td>
+		<td>70.00</td>
+	</tr>
+</tbody>
+
+</table>
+
+
+<script type="text/javascript">
+
+$('tr_01').matched_strs = ["Vegetable", "Eggplant", "Cabbage", "Onion", "10.00", "20.00", "15.00"];
+$('tr_02').matched_strs = ["Vegetable", "Eggplant", "Cabbage", "Onion", "10.00", "20.00", "15.00"];
+$('tr_03').matched_strs = ["Vegetable", "Eggplant", "Cabbage", "Onion", "10.00", "20.00", "15.00"];
+
+$('tr_04').matched_strs = ["Fruit", "Orange", "Apple", "35.00", "70.00"];
+$('tr_05').matched_strs = ["Fruit", "Orange", "Apple", "35.00", "70.00"];
+
+$('keyword').onkeyup = function(){
+		filter('food', this.value);
+	};
+$('keyword').onchange = function(){
+		filter('food', this.value);
+	};
+
+</script>
+
+</body>
+</html>
